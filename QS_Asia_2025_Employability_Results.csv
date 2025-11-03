@@ -1,0 +1,172 @@
+Rank,Institution,Country,Academic_Reputation,Employer_Reputation,Faculty_Student_Ratio,Citations_per_Paper,Staff_with_PhD,Employability_Score,Employability_Category
+1,Peking University,China (Mainland),100.0,100.0,98.6,96.4,90.7,83.35,Excellent
+2,The University of Hong Kong,Hong Kong SAR,100.0,96.8,93.3,99.5,97.4,82.63,Excellent
+3,National University of Singapore (NUS),Singapore,100.0,99.9,85.8,99.9,82.5,83.19,Excellent
+4,"Nanyang Technological University, Singapore (NTU)",Singapore,100.0,98.8,93.0,100.0,67.0,83.33,Excellent
+5,Fudan University,China (Mainland),99.8,99.5,92.5,92.1,73.4,82.7,Excellent
+6,The Chinese University of Hong Kong (CUHK),Hong Kong SAR,99.9,91.5,84.0,99.6,80.3,82.6,Excellent
+7,Tsinghua University,China (Mainland),100.0,100.0,99.0,98.6,96.9,83.34,Excellent
+8,Zhejiang University,China (Mainland),99.3,99.9,54.2,86.0,95.1,83.22,Excellent
+9,Yonsei University,South Korea,99.8,100.0,94.8,78.2,98.4,83.34,Excellent
+10,City University of Hong Kong,Hong Kong SAR,96.6,74.0,97.7,99.8,97.7,83.03,Excellent
+11,The Hong Kong University of Science and Technology,Hong Kong SAR,99.7,92.3,76.6,99.9,94.3,83.11,Excellent
+12,Universiti Malaya (UM),Malaysia,99.7,99.9,92.1,67.5,84.9,83.44,Excellent
+13,Korea University,South Korea,99.5,99.9,87.7,89.4,93.7,83.23,Excellent
+14,Shanghai Jiao Tong University,China (Mainland),99.8,99.4,79.1,76.7,61.9,83.03,Excellent
+15,KAIST - Korea Advanced Institute of Science & Technology,South Korea,99.9,99.7,79.5,89.1,98.3,82.92,Excellent
+16,Sungkyunkwan University(SKKU),South Korea,96.2,96.8,92.9,80.5,97.9,79.36,Good
+17,The Hong Kong Polytechnic University,Hong Kong SAR,98.2,78.8,83.1,99.9,64.9,82.12,Excellent
+18,Seoul National University,South Korea,100.0,100.0,94.2,69.3,79.0,83.88,Excellent
+19,Hanyang University,South Korea,89.4,98.3,91.1,80.0,79.7,80.94,Excellent
+20,Universiti Putra Malaysia (UPM),Malaysia,96.2,94.3,77.5,42.7,96.8,76.82,Good
+21,The University of Tokyo,Japan,100.0,100.0,97.0,35.8,87.8,83.5,Excellent
+22,Pohang University of Science And Technology (POSTECH),South Korea,91.1,98.3,100.0,92.3,98.6,80.91,Excellent
+23,Kyoto University,Japan,100.0,100.0,98.7,42.0,90.4,83.43,Excellent
+24,Nanjing University,China (Mainland),95.4,73.4,61.6,97.4,74.3,78.28,Good
+25,Tohoku University,Japan,99.0,99.0,99.7,20.1,89.3,82.07,Excellent
+28,Universiti Teknologi Malaysia ,Malaysia,90.7,93.4,66.9,47.4,85.6,75.66,Good
+29,Al-Farabi Kazakh National University,Kazakhstan,94.4,98.7,99.9,2.0,95.5,81.54,Excellent
+30,Tokyo Institute of Technology (Tokyo Tech),Japan,99.2,99.9,94.7,19.1,71.1,84.39,Excellent
+31,University of Science and Technology of China,China (Mainland),92.4,66.3,99.8,98.0,41.3,71.29,Good
+34,Kyushu University,Japan,95.8,95.7,90.5,24.2,95.1,78.2,Good
+35,Hokkaido University,Japan,96.1,94.7,90.5,27.8,87.2,77.09,Good
+36,Taylor's University,Malaysia,73.3,98.5,98.8,95.7,14.0,61.3,Good
+37,Universiti Sains Malaysia (USM),Malaysia,96.9,96.6,63.1,27.5,54.2,80.8,Excellent
+38,Wuhan University,China (Mainland),85.0,82.8,26.2,93.7,88.5,66.44,Good
+39,National Tsing Hua University,Taiwan,94.7,96.9,46.5,44.6,94.4,79.0,Good
+40,Kyung Hee University,South Korea,66.8,80.1,93.7,72.9,94.4,65.78,Good
+41,National Cheng Kung University (NCKU),Taiwan,93.5,97.6,53.1,37.6,81.8,80.2,Excellent
+42,National Yang Ming Chiao Tung University,Taiwan,78.7,94.5,71.7,28.7,96.8,75.77,Good
+43,Tongji University,China (Mainland),77.4,54.1,47.8,79.2,76.1,65.31,Good
+44,Indian Institute of Technology Delhi (IITD),India,95.0,99.0,27.2,26.9,94.7,67.81,Good
+45,UCSI University,Malaysia,72.4,94.9,97.6,48.4,21.0,59.23,Average
+46,Universitas Indonesia,Indonesia,95.2,98.0,85.9,1.5,10.6,61.12,Good
+47,Chulalongkorn University,Thailand,98.3,79.0,51.1,31.2,78.0,65.78,Good
+51,Waseda University,Japan,96.5,99.9,40.4,10.7,18.1,61.96,Good
+52,Airlangga University,Indonesia,85.1,97.8,82.4,1.4,9.7,60.29,Good
+55,Mahidol University,Thailand,88.8,62.4,93.3,19.8,81.8,64.32,Good
+56,Indian Institute of Technology Madras (IITM),India,88.7,95.0,30.5,16.5,99.9,68.54,Good
+57,Tianjin University,China (Mainland),53.3,53.0,69.8,89.9,56.0,57.28,Average
+58,Harbin Institute of Technology,China (Mainland),71.2,63.4,45.9,78.6,77.4,63.03,Good
+59,Bandung Institute of Technology (ITB),Indonesia,88.5,96.5,71.0,1.8,79.8,80.74,Excellent
+60,Indian Institute of Technology Kharagpur (IIT-KGP),India,80.3,89.5,14.8,36.1,99.9,64.28,Good
+61,Beijing Normal University ,China (Mainland),79.8,40.5,41.5,86.9,92.4,69.5,Good
+62,Indian Institute of Science,India,92.7,68.6,49.8,28.6,99.9,60.35,Good
+63,University of Tsukuba,Japan,82.6,63.5,74.8,16.2,88.2,64.54,Good
+64,Beijing Institute of Technology,China (Mainland),65.0,65.6,64.2,77.1,64.0,59.69,Average
+65,L.N. Gumilyov Eurasian National University (ENU),Kazakhstan,86.5,94.8,94.8,2.2,54.2,82.8,Excellent
+66,National Taiwan University of Science and Technology (Taiwan Tech),Taiwan,71.9,80.7,64.3,55.4,58.2,61.72,Good
+69,Huazhong University of Science and Technology,China (Mainland),59.9,71.1,15.1,96.1,81.5,59.23,Average
+70,Ewha Womans University,South Korea,65.4,61.6,90.6,60.0,95.3,61.94,Good
+71,Hong Kong Baptist University,Hong Kong SAR,55.6,43.7,80.0,96.9,52.1,65.67,Good
+72,Xian Jiaotong University,China (Mainland),57.2,82.0,24.1,71.2,71.6,60.35,Good
+73,Chung-Ang University (CAU),South Korea,53.3,75.2,85.1,52.0,91.6,62.87,Good
+74,Sunway University,Malaysia,48.9,81.8,71.9,77.9,14.9,50.0,Average
+75,Shandong University,China (Mainland),52.1,78.7,30.5,69.6,71.5,61.09,Good
+78,Universiti Brunei Darussalam (UBD),Brunei,59.6,42.9,98.1,26.4,94.3,63.18,Good
+83,National Sun Yat-sen University,Taiwan,70.3,66.9,51.4,24.2,96.0,60.37,Good
+86,University of the Philippines,Philippines,83.0,94.4,47.9,6.4,1.0,59.74,Average
+87,University of Tehran,"Iran, Islamic Republic of",61.0,75.5,5.7,70.5,62.7,56.27,Average
+88,Ulsan National Institute of Science and Technology (UNIST),South Korea,45.2,47.1,98.8,99.7,99.8,73.73,Good
+89,Satbayev University,Kazakhstan,81.8,82.6,98.7,1.5,17.2,60.54,Good
+90,Jilin University,China (Mainland),41.2,86.8,57.8,78.3,41.9,50.0,Average
+91,National Taipei University of Technology,Taiwan,45.6,91.4,41.6,42.5,99.9,70.25,Good
+94,Sichuan University,China (Mainland),59.9,49.8,20.0,76.0,67.8,55.88,Average
+95,Daegu Gyeongbuk Institute of Science and Technology (DGIST),South Korea,36.7,56.4,94.7,87.6,98.4,67.92,Good
+96,Hiroshima University,Japan,66.4,44.5,90.4,9.7,68.5,65.5,Good
+97,Sharif University of Technology,"Iran, Islamic Republic of",40.4,82.1,8.6,71.0,99.9,60.48,Good
+98,Nankai University,China (Mainland),56.1,38.0,43.0,99.8,93.2,59.94,Average
+99,University of Macau,Macau SAR,40.8,39.8,15.7,97.4,89.1,44.83,Average
+100,Sejong University ,South Korea,38.7,52.6,22.5,99.1,74.6,51.66,Average
+103,Renmin (People's) University of China,China (Mainland),58.6,80.3,30.0,71.5,87.2,63.71,Good
+104,Indian Institute of Technology Guwahati (IITG),India,58.0,72.0,11.5,33.8,99.2,59.04,Average
+105,Gwangju Institute of Science and Technology (GIST),South Korea,48.3,35.9,59.0,75.8,99.9,54.32,Average
+106,University of Chinese Academy of Sciences,China (Mainland),60.7,22.7,7.1,88.1,97.5,55.54,Average
+107,Southern University of Science and Technology,China (Mainland),32.8,11.4,94.2,98.8,96.5,56.76,Average
+110,Jawaharlal Nehru University,India,76.8,49.0,19.6,38.7,99.5,50.0,Average
+111,East China Normal University,China (Mainland),44.3,21.6,29.7,90.8,83.3,45.57,Average
+114,Institut Teknologi Sepuluh Nopember (ITS Surabaya),Indonesia,56.8,84.6,85.8,1.5,1.0,53.17,Average
+115,Lahore University of Management Sciences (LUMS),Pakistan,53.4,97.4,45.4,58.6,12.1,51.9,Average
+116,Inha University,South Korea,42.2,49.0,93.6,64.2,41.2,49.42,Average
+122,Taipei Medical University (TMU),Taiwan,37.0,45.0,97.4,39.7,94.1,59.23,Average
+123,National Chengchi University,Taiwan,59.3,80.7,31.2,8.1,79.4,64.0,Good
+126,Beihang University (former BUAA),China (Mainland),41.1,32.4,71.2,64.5,66.5,52.66,Average
+127,Duy Tan University,Vietnam,38.3,64.1,7.8,100.0,1.8,50.0,Average
+128,Thammasat University,Thailand,67.3,58.6,44.6,5.7,59.3,64.85,Good
+133,International Islamic University Malaysia (IIUM),Malaysia,67.1,54.3,25.3,4.2,16.5,52.34,Average
+141,Krirk University,Thailand,43.1,86.7,65.6,1.3,54.8,71.22,Good
+142,Ateneo de Manila University,Philippines,64.2,93.6,41.7,5.8,1.8,55.78,Average
+143,Hitotsubashi University,Japan,47.0,97.4,50.0,4.2,33.5,50.0,Average
+146,Universiti Tenaga Nasional (UNITEN),Malaysia,29.4,42.7,93.0,45.7,11.8,46.13,Average
+147,South China University of Technology,China (Mainland),41.1,26.9,35.5,97.2,29.8,43.33,Average
+148,University of Petroleum and Energy Studies (UPES),India,72.8,30.5,60.1,10.1,6.7,50.0,Average
+149,Kazakh National Agrarian University KazNAU,Kazakhstan,63.6,53.2,99.3,1.3,27.6,52.26,Average
+150,Vellore Institute of Technology (VIT),India,45.1,52.4,16.5,21.7,80.9,51.39,Average
+151,Iran University of Science and Technology,"Iran, Islamic Republic of",28.9,50.9,5.1,64.0,98.3,50.48,Average
+158,Bangladesh University of Engineering and Technology,Bangladesh,52.7,79.7,22.8,28.3,27.7,51.71,Average
+161,"Vietnam National University, Hanoi ",Vietnam,49.9,57.3,12.6,36.0,26.5,50.0,Average
+162,Hunan University ,China (Mainland),29.0,39.5,30.3,100.0,45.9,42.18,Average
+165,Universiti Pendidikan Sultan Idris (UPSI),Malaysia,43.8,38.4,48.7,6.2,97.5,39.08,Poor
+166,University of Seoul ,South Korea,38.0,37.8,56.9,55.9,79.2,47.1,Average
+167,Karaganda Buketov University,Kazakhstan,53.0,63.7,76.2,1.4,1.2,51.51,Average
+170,INTI International University,Malaysia,34.8,57.6,79.7,3.9,19.6,50.0,Average
+171,"Birla Institute of Technology and Science, Pilani",India,40.2,56.9,17.7,28.0,98.0,53.76,Average
+172,Universitas Brawijaya ,Indonesia,60.2,79.8,22.9,1.3,1.3,54.46,Average
+179,University of Calcutta,India,53.1,27.9,10.9,8.0,95.7,50.0,Average
+180,Zhengzhou University,China (Mainland),20.7,60.4,9.9,96.6,11.5,50.0,Average
+181,University of Santo Tomas,Philippines,43.3,79.4,20.9,5.1,1.2,50.0,Average
+182,The University of Lahore,Pakistan,40.2,58.6,22.1,44.0,1.1,50.0,Average
+183,Amity University,India,37.3,38.8,20.6,8.6,66.6,43.36,Average
+184,Viet Nam National University Ho Chi Minh City (VNU-HCM),Vietnam,57.8,66.5,8.5,11.6,1.8,53.57,Average
+185,"Lincoln University College, Malaysia",Malaysia,31.5,42.7,76.8,4.2,75.6,62.69,Good
+186,Khon Kaen University,Thailand,53.4,40.4,14.7,9.8,70.9,50.0,Average
+187,Chongqing University,China (Mainland),28.0,21.2,23.2,78.7,60.3,38.14,Poor
+188,Jamia Millia Islamia,India,35.3,14.3,53.4,72.7,81.8,40.71,Average
+188,"Lingnan University, Hong Kong",Hong Kong SAR,35.0,28.2,18.5,51.1,90.9,41.68,Average
+189,National Chung Cheng University,Taiwan,42.2,66.9,23.7,13.1,74.8,58.55,Average
+192,Tokyo University of Agriculture and Technology ,Japan,45.6,31.0,24.5,7.9,93.2,47.01,Average
+199,Ton Duc Thang University,Vietnam,19.6,28.3,10.1,100.0,1.1,40.11,Average
+202,"University of Agriculture, Faisalabad ",Pakistan,24.0,42.9,2.6,87.4,25.8,46.3,Average
+203,Banaras Hindu University,India,45.8,32.9,22.6,22.5,73.5,47.26,Average
+204,Bina Nusantara University (BINUS),Indonesia,44.2,57.8,35.3,1.3,2.8,50.0,Average
+205,University of Peshawar,Pakistan,25.9,38.5,84.0,66.3,,43.6,Average
+206,Prince of Songkla University,Thailand,62.2,24.9,30.1,14.5,38.9,50.0,Average
+209,Shiraz University,"Iran, Islamic Republic of",26.1,31.5,9.2,49.3,95.4,40.97,Average
+210,Kanazawa University,Japan,36.7,18.2,75.2,17.3,80.3,53.88,Average
+211,Jadavpur University,India,54.9,26.0,16.2,14.7,52.5,50.0,Average
+214,Lanzhou University,China (Mainland),29.6,11.5,56.3,75.2,5.6,40.45,Average
+215,East China University of Science and Technology,China (Mainland),25.8,15.7,22.6,88.1,81.9,37.52,Poor
+216,Symbiosis International (Deemed University),India,21.0,86.8,43.3,7.7,27.0,50.0,Average
+217,University of Electronic Science and Technology of China,China (Mainland),20.4,20.5,16.2,68.0,2.2,37.99,Poor
+220,Soochow University,China (Mainland),24.7,12.3,29.3,99.2,25.9,36.47,Poor
+224,King Mongkut's University of Technology Thonburi ,Thailand,43.9,27.5,25.2,33.7,44.0,46.08,Average
+225,University of Tabriz,"Iran, Islamic Republic of",22.9,22.5,4.7,82.6,,38.5,Poor
+234,Shahid Beheshti University (SBU),"Iran, Islamic Republic of",29.8,33.9,8.2,25.9,2.9,42.12,Average
+235,Pakistan Institute of Engineering and Applied Sciences (PIEAS),Pakistan,24.4,37.5,65.3,63.2,36.1,43.33,Average
+239,University of Hyderabad,India,44.1,13.8,27.0,27.1,97.6,45.78,Average
+242,National University of Uzbekistan,Uzbekistan,57.8,43.2,18.7,1.4,15.8,50.0,Average
+253,BRAC University,Bangladesh,39.9,70.6,17.1,15.2,1.0,50.0,Average
+259,Northwest Agriculture and Forestry University,China (Mainland),17.8,5.4,47.1,87.6,23.5,35.25,Poor
+264,Karaganda State Technical University,Kazakhstan,36.5,32.1,98.3,1.0,10.9,42.99,Average
+265,The Catholic University of Korea ,South Korea,17.7,13.6,99.8,26.5,79.3,46.79,Average
+266,Saveetha Institute of Medical and Technical Sciences (deemed to be university),India,21.6,13.7,37.4,5.3,9.1,37.98,Poor
+280,Daffodil International University,Bangladesh,34.9,59.2,7.6,18.5,1.1,50.0,Average
+281,Saken Seifullin Kazakh Agrotechnical University,Kazakhstan,35.4,36.6,71.1,1.3,15.0,42.77,Average
+285,"Alagappa University, Karaikudi",India,13.0,4.1,43.5,74.3,93.0,23.69,Poor
+291,Institute of Business Administration (IBA),Pakistan,18.6,79.4,3.7,57.4,,50.0,Average
+296,Northwest University (China),China (Mainland),16.1,5.3,69.5,64.5,17.5,35.99,Poor
+297,Ocean University of China,China (Mainland),20.8,12.4,13.9,48.1,33.0,37.4,Poor
+298,Huazhong Agricultural University,China (Mainland),16.7,9.3,12.1,91.5,61.0,36.72,Poor
+299,Pukyong National University ,South Korea,21.7,14.4,46.9,23.0,69.7,31.96,Poor
+300,Guangzhou University,China (Mainland),8.2,3.9,14.4,89.5,76.6,35.29,Poor
+301,Shiraz University of Technology,"Iran, Islamic Republic of",6.7,9.9,27.6,67.7,99.9,32.86,Poor
+307,Chang Jung Christian University,Taiwan,35.0,27.1,71.7,8.2,8.9,42.41,Average
+329,Universitas Sumatera Utara,Indonesia,32.7,33.0,58.3,1.1,1.1,41.77,Average
+330,Beijing Foreign Studies University,China (Mainland),21.7,13.6,55.2,6.0,47.1,24.97,Poor
+331,Hohai University,China (Mainland),16.4,5.8,25.3,33.8,37.3,34.54,Poor
+332,Fu Jen Catholic University,Taiwan,28.1,29.4,4.6,16.1,86.6,40.41,Average
+341,Universiti Malaysia Perlis,Malaysia,28.6,22.9,28.3,3.0,47.9,37.17,Poor
+372,Guangdong University of Technology,China (Mainland),11.8,11.0,40.3,91.0,2.2,36.45,Poor
+380,Nanjing Tech University,China (Mainland),11.4,4.9,29.8,97.0,8.1,36.18,Poor
+393,Shanghai Normal University,China (Mainland),19.3,6.3,19.6,79.3,24.6,36.32,Poor
+399,Chitkara University,India,22.6,36.8,23.5,7.7,3.7,43.37,Average

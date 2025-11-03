@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
-import matplotlib.pyplot as plt
 
 # ============= FUZZY SYSTEM SETUP =============
 
@@ -17,7 +16,7 @@ staff_phd = ctrl.Antecedent(np.arange(0, 101, 1), 'staff_phd')
 employability = ctrl.Consequent(np.arange(0, 101, 1), 'employability')
 
 # Define membership functions for inputs
-for variable in [academic_reputation, employer_reputation, faculty_student_ratio, 
+for variable in [academic_reputation, employer_reputation, faculty_student_ratio,
                  citations_per_paper, staff_phd]:
     variable['low'] = fuzz.trimf(variable.universe, [0, 0, 50])
     variable['medium'] = fuzz.trimf(variable.universe, [0, 50, 100])
@@ -29,82 +28,111 @@ employability['average'] = fuzz.trimf(employability.universe, [20, 50, 80])
 employability['good'] = fuzz.trimf(employability.universe, [60, 80, 100])
 employability['excellent'] = fuzz.trimf(employability.universe, [80, 100, 100])
 
-# Define fuzzy rules based on research findings
-rule1 = ctrl.Rule(academic_reputation['high'] & employer_reputation['high'], 
+# Define fuzzy rules
+rule1 = ctrl.Rule(academic_reputation['high'] & employer_reputation['high'],
                   employability['excellent'])
-rule2 = ctrl.Rule(employer_reputation['high'] & staff_phd['high'], 
+rule2 = ctrl.Rule(employer_reputation['high'] & staff_phd['high'],
                   employability['good'])
-rule3 = ctrl.Rule(citations_per_paper['high'] & academic_reputation['high'], 
+rule3 = ctrl.Rule(citations_per_paper['high'] & academic_reputation['high'],
                   employability['good'])
-rule4 = ctrl.Rule(faculty_student_ratio['high'] & staff_phd['high'], 
+rule4 = ctrl.Rule(faculty_student_ratio['high'] & staff_phd['high'],
                   employability['good'])
-rule5 = ctrl.Rule(academic_reputation['low'] & employer_reputation['low'], 
+rule5 = ctrl.Rule(academic_reputation['low'] & employer_reputation['low'],
                   employability['poor'])
-rule6 = ctrl.Rule(employer_reputation['medium'] & citations_per_paper['medium'], 
+rule6 = ctrl.Rule(employer_reputation['medium'] & citations_per_paper['medium'],
                   employability['average'])
-rule7 = ctrl.Rule(academic_reputation['high'] & citations_per_paper['high'] & 
+rule7 = ctrl.Rule(academic_reputation['high'] & citations_per_paper['high'] &
                   staff_phd['high'], employability['excellent'])
-rule8 = ctrl.Rule(faculty_student_ratio['low'] | staff_phd['low'], 
+rule8 = ctrl.Rule(faculty_student_ratio['low'] | staff_phd['low'],
                   employability['average'])
 
 # Create control system
-employability_ctrl = ctrl.ControlSystem([rule1, rule2, rule3, rule4, rule5, 
+employability_ctrl = ctrl.ControlSystem([rule1, rule2, rule3, rule4, rule5,
                                          rule6, rule7, rule8])
 employability_simulation = ctrl.ControlSystemSimulation(employability_ctrl)
 
-# ============= CSV PROCESSING FUNCTION =============
+# ============= READ QS ASIA RANKINGS FILE =============
 
-def calculate_employability_from_csv(csv_file):
+def read_qs_asia_rankings(filename):
     """
-    Read university data from CSV and calculate employability scores
-    
-    Parameters:
-    -----------
-    csv_file : str
-        Path to CSV file with university rankings data
-        
-    Returns:
-    --------
-    pandas.DataFrame
-        DataFrame with original data plus employability scores and categories
+    Read the QS Asia Rankings CSV file and extract only relevant columns
     """
-    # Read CSV file
-    df = pd.read_csv(csv_file)
-    
-    # Map column names from CSV to fuzzy system variables
-    column_mapping = {
-        'ar score': 'academic_reputation',
-        'er score': 'employer_reputation',
-        'fsr score': 'faculty_student_ratio',
-        'cpp score': 'citations_per_paper',
-        'swp score': 'staff_phd'
+    # Read with multi-level headers and latin-1 encoding
+    df = pd.read_csv(filename, encoding='latin-1', header=[0, 1])
+
+    # Flatten column names
+    df.columns = [' '.join(col).strip() for col in df.columns.values]
+
+    # Skip the first row which contains "Sorting", "RANK", etc. (header labels)
+    df = df.iloc[1:].reset_index(drop=True)
+
+    # Define columns to keep
+    columns_to_keep = {
+        'Unnamed: 1_level_0 2025': 'Rank',
+        'Unnamed: 3_level_0 Institution Name': 'Institution',
+        'Unnamed: 4_level_0 Country/ Territory': 'Country',
+        'Unnamed: 11_level_0 Academic Reputation': 'Academic_Reputation',
+        'Unnamed: 13_level_0 Employer Reputation': 'Employer_Reputation',
+        'Unnamed: 15_level_0 Faculty Student': 'Faculty_Student_Ratio',
+        'Unnamed: 19_level_0 Citations per Paper': 'Citations_per_Paper',
+        'Unnamed: 23_level_0 Staff with PhD': 'Staff_with_PhD'
     }
-    
-    # Initialize lists to store results
+
+    # Select only the columns we need
+    df_selected = df[list(columns_to_keep.keys())].copy()
+
+    # Rename columns to simpler names
+    df_selected = df_selected.rename(columns=columns_to_keep)
+
+    # Remove rows where Rank contains non-numeric values (like "Rank display")
+    # This filters out any remaining header rows
+    df_selected = df_selected[pd.to_numeric(df_selected['Rank'], errors='coerce').notna()].copy()
+
+    # Convert Rank to integer
+    df_selected['Rank'] = df_selected['Rank'].astype(int)
+
+    # Convert score columns to numeric
+    score_columns = ['Academic_Reputation', 'Employer_Reputation', 'Faculty_Student_Ratio',
+                     'Citations_per_Paper', 'Staff_with_PhD']
+    for col in score_columns:
+        df_selected[col] = pd.to_numeric(df_selected[col], errors='coerce')
+
+    # Reset index after filtering
+    df_selected = df_selected.reset_index(drop=True)
+
+    return df_selected
+
+# ============= CALCULATE EMPLOYABILITY =============
+
+def calculate_employability_scores(df):
+    """
+    Calculate employability scores for all universities
+    """
     employability_scores = []
     employability_categories = []
-    
-    # Process each university
+
+    print(f"Processing {len(df)} universities...")
+
     for idx, row in df.iterrows():
         try:
-            # Extract input values
+            # Extract input values (use 50 as default for missing values)
             inputs = {
-                'academic_reputation': float(row['ar score']) if pd.notna(row['ar score']) else 50,
-                'employer_reputation': float(row['er score']) if pd.notna(row['er score']) else 50,
-                'faculty_student_ratio': float(row['fsr score']) if pd.notna(row['fsr score']) else 50,
-                'citations_per_paper': float(row['cpp score']) if pd.notna(row['cpp score']) else 50,
-                'staff_phd': float(row['swp score']) if pd.notna(row['swp score']) else 50
+                'academic_reputation': float(row['Academic_Reputation']) if pd.notna(row['Academic_Reputation']) else 50,
+                'employer_reputation': float(row['Employer_Reputation']) if pd.notna(row['Employer_Reputation']) else 50,
+                'faculty_student_ratio': float(row['Faculty_Student_Ratio']) if pd.notna(row['Faculty_Student_Ratio']) else 50,
+                'citations_per_paper': float(row['Citations_per_Paper']) if pd.notna(row['Citations_per_Paper']) else 50,
+                'staff_phd': float(row['Staff_with_PhD']) if pd.notna(row['Staff_with_PhD']) else 50
             }
-            
+
             # Set inputs to fuzzy system
             for key, value in inputs.items():
                 employability_simulation.input[key] = value
-            
+
             # Compute employability
             employability_simulation.compute()
             score = employability_simulation.output['employability']
-            
-            # Categorize employability
+
+            # Categorize
             if score >= 80:
                 category = 'Excellent'
             elif score >= 60:
@@ -113,107 +141,79 @@ def calculate_employability_from_csv(csv_file):
                 category = 'Average'
             else:
                 category = 'Poor'
-            
+
             employability_scores.append(round(score, 2))
             employability_categories.append(category)
-            
+
         except Exception as e:
-            print(f"Error processing row {idx} ({row.get('Institution', 'Unknown')}): {e}")
             employability_scores.append(None)
             employability_categories.append('Error')
-    
-    # Add results to dataframe
+
     df['Employability_Score'] = employability_scores
     df['Employability_Category'] = employability_categories
-    
+
     return df
 
-# ============= USAGE EXAMPLE =============
+# ============= MAIN EXECUTION =============
 
-# Process CSV file
-csv_filename = 'dataset.csv'  # Replace with your CSV filename
-results_df = calculate_employability_from_csv(csv_filename)
-
-# Display results
-print("\n" + "="*100)
-print("GRADUATE EMPLOYABILITY ASSESSMENT RESULTS")
+print("="*100)
+print("FUZZY INFERENCE SYSTEM FOR SDG 4: GRADUATE EMPLOYABILITY ASSESSMENT")
+print("QS Asia University Rankings 2025")
 print("="*100 + "\n")
 
-# Show key columns
-display_columns = ['Institution', 'Country / Territory', 'ar score', 'er score', 
-                   'fsr score', 'cpp score', 'swp score', 
-                   'Employability_Score', 'Employability_Category']
+# Read the file
+filename = 'dataset.csv'
+print(f"Reading file: {filename}")
+df = read_qs_asia_rankings(filename)
+print(f"✓ Successfully loaded {len(df)} universities")
+print(f"✓ Removed header rows (Sorting, Rank display, etc.)")
+print(f"✓ Extracted 5 key attributes for employability assessment\n")
 
-print(results_df[display_columns].head(20).to_string(index=False))
+# Calculate employability
+df = calculate_employability_scores(df)
+print(f"✓ Calculated employability scores\n")
 
-# Save results to new CSV
-output_filename = 'university_employability_results.csv'
-results_df.to_csv(output_filename, index=False)
-print(f"\n\nResults saved to: {output_filename}")
+# Display all columns (only the used attributes)
+print("="*100)
+print("ATTRIBUTES USED IN THE MODEL:")
+print("="*100)
+print("1. Academic Reputation")
+print("2. Employer Reputation")
+print("3. Faculty Student Ratio")
+print("4. Citations per Paper")
+print("5. Staff with PhD")
+print("\n" + "="*100)
+print("TOP 20 UNIVERSITIES BY EMPLOYABILITY SCORE")
+print("="*100 + "\n")
 
-# ============= STATISTICS AND ANALYSIS =============
+valid_results = df[df['Employability_Category'] != 'Error']
+top_20 = valid_results.nlargest(20, 'Employability_Score')
+print(top_20.to_string(index=False))
 
+# Summary Statistics
 print("\n" + "="*100)
 print("SUMMARY STATISTICS")
 print("="*100 + "\n")
 
-# Category distribution
-category_counts = results_df['Employability_Category'].value_counts()
+category_counts = valid_results['Employability_Category'].value_counts()
 print("Employability Category Distribution:")
-print(category_counts)
-print()
+for category, count in category_counts.items():
+    percentage = (count / len(valid_results)) * 100
+    print(f"  {category:12s}: {count:4d} ({percentage:5.1f}%)")
 
-# Score statistics
-print("Employability Score Statistics:")
-print(f"Mean: {results_df['Employability_Score'].mean():.2f}")
-print(f"Median: {results_df['Employability_Score'].median():.2f}")
-print(f"Min: {results_df['Employability_Score'].min():.2f}")
-print(f"Max: {results_df['Employability_Score'].max():.2f}")
-print(f"Std Dev: {results_df['Employability_Score'].std():.2f}")
+print(f"\nEmployability Score Statistics:")
+print(f"  Mean:   {valid_results['Employability_Score'].mean():.2f}")
+print(f"  Median: {valid_results['Employability_Score'].median():.2f}")
+print(f"  Std:    {valid_results['Employability_Score'].std():.2f}")
+print(f"  Min:    {valid_results['Employability_Score'].min():.2f}")
+print(f"  Max:    {valid_results['Employability_Score'].max():.2f}")
 
-# Top 10 universities by employability
+# Save results with only relevant columns
+output_filename = 'QS_Asia_2025_Employability_Results.csv'
+df.to_csv(output_filename, index=False, encoding='utf-8')
+print(f"\n✓ Results saved to: {output_filename}")
+print(f"✓ Output contains {len(df)} universities with {len(df.columns)} relevant columns")
+
 print("\n" + "="*100)
-print("TOP 10 UNIVERSITIES BY EMPLOYABILITY SCORE")
-print("="*100 + "\n")
-
-top_10 = results_df.nlargest(10, 'Employability_Score')[
-    ['RANK', 'Institution', 'Country / Territory', 'Employability_Score', 'Employability_Category']
-]
-print(top_10.to_string(index=False))
-
-# ============= OPTIONAL: SINGLE UNIVERSITY QUERY =============
-
-def query_university_employability(df, university_name):
-    """
-    Query employability for a specific university
-    
-    Parameters:
-    -----------
-    df : pandas.DataFrame
-        DataFrame with employability results
-    university_name : str
-        Name of university to query
-    """
-    result = df[df['Institution'].str.contains(university_name, case=False, na=False)]
-    
-    if len(result) > 0:
-        print(f"\n{'='*80}")
-        print(f"EMPLOYABILITY ASSESSMENT: {result.iloc[0]['Institution']}")
-        print(f"{'='*80}\n")
-        print(f"Country: {result.iloc[0]['Country / Territory']}")
-        print(f"Rank: {result.iloc[0]['RANK']}")
-        print(f"\nInput Scores:")
-        print(f"  Academic Reputation: {result.iloc[0]['ar score']:.1f}")
-        print(f"  Employer Reputation: {result.iloc[0]['er score']:.1f}")
-        print(f"  Faculty-Student Ratio: {result.iloc[0]['fsr score']:.1f}")
-        print(f"  Citations per Paper: {result.iloc[0]['cpp score']:.1f}")
-        print(f"  Staff with PhD: {result.iloc[0]['swp score']:.1f}")
-        print(f"\n{'='*80}")
-        print(f"EMPLOYABILITY SCORE: {result.iloc[0]['Employability_Score']:.2f}")
-        print(f"CATEGORY: {result.iloc[0]['Employability_Category']}")
-        print(f"{'='*80}\n")
-    else:
-        print(f"University '{university_name}' not found in dataset")
-
-# Example query
-# query_university_employability(results_df, 'Peking University')
+print("ANALYSIS COMPLETE")
+print("="*100)
